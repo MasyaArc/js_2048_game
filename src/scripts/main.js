@@ -451,6 +451,12 @@ game.checkGameStatus = function () {
 // #region Start-Restart
 
 game.restart = function () {
+  this.score = 0;
+
+  const gameScore = document.querySelector('.game-score');
+
+  gameScore.textContent = this.score;
+
   const isMessageLose = document.querySelector('.message-lose');
   const isMessageWin = document.querySelector('.message-lose');
   const table = document.querySelector('table');
@@ -472,6 +478,7 @@ game.restart = function () {
       row.cells[j].className = 'field-cell';
     }
   }
+
 
   this.status = 'idle';
 };
