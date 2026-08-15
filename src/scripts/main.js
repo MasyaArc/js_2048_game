@@ -479,7 +479,6 @@ game.restart = function () {
     }
   }
 
-
   this.status = 'idle';
 };
 
@@ -500,6 +499,10 @@ document.addEventListener('click', (e) => {
     button.classList.add('restart');
     button.textContent = 'Restart';
 
+    const messageDiv = document.querySelector('.message-start');
+
+    messageDiv.classList.add('hidden');
+
     return;
   }
 
@@ -508,68 +511,36 @@ document.addEventListener('click', (e) => {
     button.classList.remove('restart');
     button.classList.add('start');
     button.textContent = 'Start';
+
+    const messageDiv = document.querySelector('.message-start');
+
+    messageDiv.classList.remove('hidden');
   }
 });
 
 document.addEventListener('keydown', (e) => {
   if (e.key === 'ArrowLeft') {
-    if (game.getStatus() !== 'playing') {
-      game.start();
-
-      const button = document.querySelector('button');
-
-      button.classList.remove('start');
-      button.classList.add('restart');
-      button.textContent = 'Restart';
-
-      return;
+    if (game.getStatus() !== 'idle') {
+      game.moveLeft();
     }
-    game.moveLeft();
   }
 
   if (e.key === 'ArrowRight') {
-    if (game.getStatus() !== 'playing') {
-      game.start();
-
-      const button = document.querySelector('button');
-
-      button.classList.remove('start');
-      button.classList.add('restart');
-      button.textContent = 'Restart';
-
-      return;
+    if (game.getStatus() !== 'idle') {
+      game.moveRight();
     }
-    game.moveRight();
   }
 
   if (e.key === 'ArrowDown') {
-    if (game.getStatus() !== 'playing') {
-      game.start();
-
-      const button = document.querySelector('button');
-
-      button.classList.remove('start');
-      button.classList.add('restart');
-      button.textContent = 'Restart';
-
-      return;
+    if (game.getStatus() !== 'idle') {
+      game.moveDown();
     }
-    game.moveDown();
   }
 
   if (e.key === 'ArrowUp') {
-    if (game.getStatus() !== 'playing') {
-      game.start();
-
-      const button = document.querySelector('button');
-
-      button.classList.remove('start');
-      button.classList.add('restart');
-      button.textContent = 'Restart';
-
-      return;
+    if (game.getStatus() !== 'idle') {
+      game.moveUp();
     }
-    game.moveUp();
   }
 });
 
